@@ -1,0 +1,94 @@
+{
+  "name": "edi-project",
+  "version": "1.0.0",
+  "description": "Enterprise Data Integration Platform - Monorepo",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "cli"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:cli": "cd cli && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend && npm run build:cli",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build:cli": "cd cli && npm run build",
+    "test": "npm run test:frontend && npm run test:backend && npm run test:cli",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "test:cli": "cd cli && npm run test",
+    "test:coverage": "npm run test:frontend:coverage && npm run test:backend:coverage && npm run test:cli:coverage",
+    "test:frontend:coverage": "cd frontend && npm run test:coverage",
+    "test:backend:coverage": "cd backend && npm run test:coverage",
+    "test:cli:coverage": "cd cli && npm run test:coverage",
+    "test:e2e": "cd e2e && npm run test",
+    "lint": "npm run lint:frontend && npm run lint:backend && npm run lint:cli",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:cli": "cd cli && npm run lint",
+    "lint:fix": "npm run lint:frontend:fix && npm run lint:backend:fix && npm run lint:cli:fix",
+    "lint:frontend:fix": "cd frontend && npm run lint:fix",
+    "lint:backend:fix": "cd backend && npm run lint:fix",
+    "lint:cli:fix": "cd cli && npm run lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "npm run clean:frontend && npm run clean:backend && npm run clean:cli",
+    "clean:frontend": "cd frontend && npm run clean",
+    "clean:backend": "cd backend && npm run clean",
+    "clean:cli": "cd cli && npm run clean",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "concurrently": "^8.2.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/edi-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/edi-project/issues"
+  },
+  "homepage": "https://github.com/yourusername/edi-project#readme",
+  "keywords": [
+    "edi",
+    "enterprise",
+    "data-integration",
+    "transformation",
+    "monorepo",
+    "react",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "EDI Project Team",
+  "license": "MIT"
+}
